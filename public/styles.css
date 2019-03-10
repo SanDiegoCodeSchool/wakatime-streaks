@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+
+header {
+    color:#FFF;
+    background-color: #8b0000;
+    padding: 5px 0px;
+    margin-bottom: 5px;
+}
+
+#wakaResult {
+    font-size: 14vw;
+    color: #747474;
+}
+
+footer {
+    position: fixed;
+    bottom: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+footer a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #000000;
+    border-radius: 100%;
+    padding: 23px 15px;
+    font-size: 1.4rem;
+
+}
