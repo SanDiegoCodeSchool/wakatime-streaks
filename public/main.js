@@ -1,5 +1,3 @@
-
-
 function getStreak() {
     $.ajax({
         url: "/streaks",
