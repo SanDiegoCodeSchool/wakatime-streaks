@@ -3,21 +3,22 @@ function getAllStudents(){
         url: "/api/Students",
         success: function(result) {
             let students = result.map(function(student){
-                return `<li><a href="#">${student.firstname} ${student.lastname}</a> <a href="#">delete</a></li>`  
+                return `<li id="${student.id}">${student.firstname} ${student.lastname} <a href="#">delete</a></li>`  
             });
             $('ul').append(students.join(""));
+            $("li").click(function() {
+                getStreak($(this).attr('id'));
+            });
         },
         failure: function(response) {
             console.log(response);
         }
     });
 }
-
-function getStreak() {
+function getStreak(id) {
     $.ajax({
-        url: "/streaks",
+        url: `/api/Students/getStreaks?id=${id}`,
         success: function(result) {
-            console.log(result);
             $("#wakaResult").html(`Streak: ${result.days}`);
         },
         failure: function(response) {
@@ -31,7 +32,6 @@ function postStudent(student){
         url: "/api/Students",
         data: student,
         success: function(result) {
-            console.log(result);
         },
         failure: function(response) {
             console.log(response);

@@ -31,3 +31,6 @@ footer a {
     font-size: 1.4rem;
 
 }
+li {
+    list-style-type: none;
+}

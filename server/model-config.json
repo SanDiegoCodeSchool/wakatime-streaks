@@ -40,6 +40,14 @@
   },
   "Student": {
     "dataSource": "db",
-    "public": true
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true,
+          "getStreaks": true
+        }
+      }
+    }
   }
 }
