@@ -1,14 +1,22 @@
 'use strict';
-
+const ejs = require('ejs');
 const morgan = require('morgan');
 const loopback = require('loopback');
 const boot = require('loopback-boot');
+const path = require('path');
 
 require('dotenv').config();
 
 const app = module.exports = loopback();
 
 app.use(morgan('dev'));
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.get('/', function(req, res){
+  console.log(`inside slash route`)
+  res.render('leaderboard', {});
+});
 
 app.start = function() {
   // start the web server

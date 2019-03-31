@@ -1,7 +1,7 @@
 {
   "name": "wakatime-streaks",
   "version": "0.9.0",
-  "description": "Keep track of your coding streaks via Wakatime stats.",
+  "description": "streaks",
   "engines": {
     "node": ">=10"
   },
@@ -14,6 +14,7 @@
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
     "helmet": "^3.10.0",
     "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
@@ -32,6 +33,5 @@
     "type": "",
     "url": ""
   },
-  "license": "UNLICENSED",
-  "description": "streaks"
+  "license": "UNLICENSED"
 }
