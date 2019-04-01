@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.get('/', function(req, res){
   let ids = app.models.Student.find()
   .then(function(studentData){
@@ -23,6 +24,12 @@ app.get('/', function(req, res){
     })
   })
 });
+
+app.get('/login', function(req, res){
+  res.render('login', {});
+});
+
+
 
 app.start = function() {
   // start the web server
