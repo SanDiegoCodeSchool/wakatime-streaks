@@ -14,8 +14,14 @@ app.use(morgan('dev'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.get('/', function(req, res){
-  console.log(`inside slash route`)
-  res.render('leaderboard', {});
+  let ids = app.models.Student.find()
+  .then(function(studentData){
+    // todo loop over all students pass the student id, get their streaks
+    // pass all that data to leader board
+    app.models.Student.getStreaks("3", function(err, streak){
+      res.render('leaderboard', {});
+    })
+  })
 });
 
 app.start = function() {
