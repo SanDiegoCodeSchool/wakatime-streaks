@@ -23,11 +23,11 @@ module.exports = function(Student) {
         .then(data => data.wakatimekey)
         .catch(error => console.log(error));
     }
-
+    
     Student.getStreaks = function(id, cb) { 
         let yesterday = moment().subtract(1, 'days').format('MM-DD-YYYY');
         let dayBefore = moment().subtract(2, 'days').format('MM-DD-YYYY');
-
+        
         getApiKey(id)
         .then(apiKey =>
             Promise.all([getHoursCoding(apiKey, yesterday), getHoursCoding(apiKey, dayBefore)])
@@ -41,10 +41,10 @@ module.exports = function(Student) {
                 .then(function(dailyTotals) {
                     let days = 1;
                     for(let i = 0; i < dailyTotals.length; i++) {
-                        if(dailyTotals[i] < CODING_MINIMUM) return days;
+                        if(dailyTotals[i] < CODING_MINIMUM) cb(null, days);
                         days++;
                     }
-                    cb(null, days);
+                    return cb(null, days);
                 })
             })
             .catch(error => cb(error, null))
