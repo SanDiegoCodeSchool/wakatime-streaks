@@ -32,6 +32,8 @@ function postStudent(student){
         url: "/api/Students",
         data: student,
         success: function(result) {
+            console.log(result);
+            return result;
         },
         failure: function(response) {
             console.log(response);

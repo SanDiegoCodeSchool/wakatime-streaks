@@ -13,16 +13,38 @@ app.use(morgan('dev'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.get('/', function(req, res){
   let ids = app.models.Student.find()
   .then(function(studentData){
-    // todo loop over all students pass the student id, get their streaks
     // pass all that data to leader board
-    app.models.Student.getStreaks("3", function(err, streak){
+    const studentResults = [];
+    for(let i = 0; i < studentData.length; i++){
+      studentResults.push(
+        new Promise((resolve, reject) => {
+          app.models.Student.getStreaks(studentData[i].id, (error, data) => {
+            if (error) return reject(null); 
+            resolve(data);
+          });
+        })
+      )
+    }
+    Promise.all(studentResults)
+    .then(data => {
+    })
+    .catch(error => console.log(error));
+
+    app.models.Student.getStreaks(studentData.id, function(err, streak){
       res.render('leaderboard', {});
     })
   })
 });
+
+app.get('/login', function(req, res){
+  res.render('login', {});
+});
+
+
 
 app.start = function() {
   // start the web server
