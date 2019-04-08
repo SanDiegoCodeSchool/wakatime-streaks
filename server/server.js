@@ -40,10 +40,18 @@ app.get('/', function(req, res){
   })
 });
 
+app.get('/signup', function(req, res){
+  res.render('signup', {});
+});
 app.get('/login', function(req, res){
   res.render('login', {});
 });
-
+app.get('/privacy', function(req, res){
+  res.render('privacy', {});
+});
+app.get('/userEdit', function(req, res){
+  res.render('userEdit', {});
+});
 
 
 app.start = function() {
