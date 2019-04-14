@@ -1,0 +1,53 @@
+function getAllStudents(){
+    $.ajax({
+        url: "/api/Students",
+        success: function(result) {
+            let students = result.map(function(student){
+                return `<li id="${student.id}">${student.firstname} ${student.lastname} <a href="#">delete</a></li>`  
+            });
+            $('ul').append(students.join(""));
+            $("li").click(function() {
+                getStreak($(this).attr('id'));
+            });
+        },
+        failure: function(response) {
+            console.log(response);
+        }
+    });
+}
+function getStreak(id) {
+    $.ajax({
+        url: `/api/Students/getStreaks?id=${id}`,
+        success: function(result) {
+            $("#wakaResult").html(`Streak: ${result.days}`);
+        },
+        failure: function(response) {
+            console.log(response);
+        }
+    });
+}
+function postStudent(student){
+    $.ajax({
+        type: "post",
+        url: "/api/Students",
+        data: student,
+        success: function(result) {
+            console.log(result);
+        },
+        failure: function(response) {
+            console.log(response);
+        }
+    });
+}
+$(document).ready(function(){
+    
+    $("button").click(function(e){
+        e.preventDefault();      
+        var wakatimekey = $('#wakatimekey').val();
+        var firstname = $('#firstname').val();
+        var lastname = $('#lastname').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        postStudent({firstname, lastname, wakatimekey, email, password});
+    });
+});
