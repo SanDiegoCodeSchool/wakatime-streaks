@@ -48,6 +48,9 @@ function loginVerify(student){
         url: "/api/Students/login",
         data: student,
         success: function(result) {
+            document.cookie = `token=${result.id}`;
+            document.cookie = `userId=${result.userId}`;
+            window.location.href = '/userEdit';
         },
         failure: function(response) {
             console.log(response);
@@ -58,8 +61,8 @@ function loginVerify(student){
 $(document).ready(function(){
     $("#login-button").click(function(e){
         e.preventDefault();      
-        var username = $('#username').val();
+        var email = $('#email').val();
         var password = $('#password').val();
-        var login = loginVerify({username, password});
+        var login = loginVerify({email, password});
     });
 });

@@ -7,10 +7,18 @@
         <header>
             <h1>Wakatime Streak</h1>
         </header>
-        
-        <ul>
-        </ul>
-        <h1 id="wakaResult"></h1>
+        <table>
+            <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].student.firstname %></td>
+                    <td><%= data[i].student.lastname %></td>
+                    <td><%= data[i].data %></td>
+                </tr>
+            <% } %>
+        </table>
+        <div>
+            <a id="cta-link" href="/userEdit">Edit your profile.</a>
+        </div>
         <footer>
             <strong><a target="_blank" href="https://www.sdcs.io">[sdcs]</a></strong>
         </footer>
@@ -18,4 +26,3 @@
         <script src="leaderboard.js"></script>
     </body>
 </html>
-

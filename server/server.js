@@ -32,6 +32,7 @@ app.get('/', function(req, res){
     Promise.all(studentResults)
     .then(data => {
       // TODO: update template to use new leader board data
+      data.sort((a, b) => (b.data - a.data));
       console.log(`data ready for page ${JSON.stringify(data)}`);
       res.render('leaderboard', { data });
     })
