@@ -17,25 +17,28 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res){
   let ids = app.models.Student.find()
   .then(function(studentData){
-    // pass all that data to leader board
     const studentResults = [];
     for(let i = 0; i < studentData.length; i++){
       studentResults.push(
         new Promise((resolve, reject) => {
           app.models.Student.getStreaks(studentData[i].id, (error, data) => {
             if (error) return reject(null); 
-            resolve(data);
+            resolve({ data, student: studentData[i] });
           });
         })
       )
     }
+    
     Promise.all(studentResults)
     .then(data => {
+      // TODO: update template to use new leader board data
+      data.sort((a, b) => (b.data - a.data));
+      console.log(`data ready for page ${JSON.stringify(data)}`);
+      res.render('leaderboard', { data });
     })
     .catch(error => console.log(error));
 
     app.models.Student.getStreaks(studentData.id, function(err, streak){
-      res.render('leaderboard', {});
     })
   })
 });
