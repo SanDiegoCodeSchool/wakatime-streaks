@@ -1,4 +1,5 @@
-{
+console.log("using production settings");
+module.exports = {
   "db": {
     "name": "db",
     "connector": "memory",
@@ -6,6 +7,7 @@
   },
   "mongo1": {
     "name": "mongo1",
+    "url": process.env.MONGODB_URI, 
     "connector": "mongodb"
   }
 }

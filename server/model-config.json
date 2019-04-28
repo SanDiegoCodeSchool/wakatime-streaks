@@ -14,29 +14,29 @@
     ]
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mongo1",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mongo1",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mongo1",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mongo1",
     "public": false
   },
   "Note": {
-    "dataSource": "db"
+    "dataSource": "mongo1"
   },
   "Student": {
-    "dataSource": "db",
+    "dataSource": "mongo1",
     "public": true,
     "options": {
       "remoting": {
