@@ -15,6 +15,17 @@ function getAllStudents(){
         }
     });
 }
+function getStudentById(userId, token){
+    return $.ajax({
+        url: `/api/Students/${userId}`,
+        success: function(student) {
+            return student;
+        },
+        failure: function(response) {
+            console.log(response);
+        }
+    });
+}
 function getStreak(id) {
     $.ajax({
         url: `/api/Students/getStreaks?id=${id}`,
@@ -39,6 +50,9 @@ function postStudent(student){
     });
 }
 $(document).ready(function(){
+    if(readCookieByKey('token')){
+        changeCTA();
+    }
     getAllStudents();
     $("button").click(function(e){
         e.preventDefault();
@@ -53,3 +67,13 @@ $(document).ready(function(){
         getStreak();
     });
 });
+
+function readCookieByKey(key){
+    var value = document.cookie.match('(^|[^;]+)\\s*' + key + '\\s*=\\s*([^;]+)');
+    return value ? value.pop() : '';
+}
+
+function changeCTA(){
+    $('#cta-link').html('Edit User');
+    $('#cta-link').attr('href','/userEdit');
+}

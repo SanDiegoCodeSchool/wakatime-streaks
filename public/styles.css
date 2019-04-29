@@ -22,7 +22,19 @@ footer {
     width: 100%;
 }
 
-footer a {
+#logoForPrivacy {
+    bottom: 5px;
+    text-align: center;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+    background-color: #000000;
+    border-radius: 100%;
+    padding: 23px 15px;
+    font-size: 1.4rem;
+}
+
+footer #logo{
     text-decoration: none;
     color: #fff;
     background-color: #000000;
@@ -30,6 +42,9 @@ footer a {
     padding: 23px 15px;
     font-size: 1.4rem;
 
+}
+#privacy{
+    float: 10%;
 }
 li {
     list-style-type: none;
