@@ -7,10 +7,13 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "nodemon server/server"
+    "start": "nodemon server/server",
+    "test": "mocha tests/*.spec.js --exit"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "dotenv": "^7.0.0",
@@ -20,6 +23,7 @@
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mongodb": "^4.1.0",
+    "mocha": "^6.1.4",
     "moment": "^2.24.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10",

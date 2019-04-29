@@ -15,6 +15,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
+  const mockData = [{
+    "data":6,"student":{"firstname":"Mike","lastname":"Laurel","wakatimekey":"419d3f8f-29ec-480a-9538-9e67e3872f91","realm":"string","username":"string","email":"test@test.com","emailVerified":false,"id":"5cc63179cc471c7df434a961"}
+  }];
+  if (process.env.NODE_ENV === 'test') return res.render('leaderboard', { data:mockData }); 
   let ids = app.models.Student.find()
   .then(function(studentData){
     const studentResults = [];
@@ -38,8 +42,7 @@ app.get('/', function(req, res){
     })
     .catch(error => console.log(error));
 
-    app.models.Student.getStreaks(studentData.id, function(err, streak){
-    })
+    
   })
 });
 
